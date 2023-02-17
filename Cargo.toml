@@ -1,0 +1,23 @@
+[package]
+name = "GHLIntranetV2"
+authors = ["Jeffery D Mitchell, <jdm@ghl.ca>"]
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "ghlintranetv2"
+path = "src/app/main.rs"
+
+[lib]
+name = "ghlintranetv2"
+path = "src/lib/lib.rs"
+
+[dependencies]
+sycamore = "0.8"
+sycamore-router = "0.8"
+chrono = "0.4.22"
+gloo-net = "0.2.4"
+serde = { version = "1", features = ["derive"]}
+futures = "0.3"
