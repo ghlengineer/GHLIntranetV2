@@ -55,7 +55,7 @@ pub fn TechnicalReferences<G: Html>(cx: Scope) -> View<G> {
                         td { "Create your own" }
                     }
                 }
-            Footer {}
         }
+        Footer {}
     }
 }

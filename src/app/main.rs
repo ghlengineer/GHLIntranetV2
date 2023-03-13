@@ -2,7 +2,7 @@
 
 use sycamore::prelude::*;
 
-use ghlintranetv2::routes::router::SiteRouter;
+use ghl_intranet_sycamore_v3_lib::routes::router::SiteRouter;
 
 fn main() {
     sycamore::render(|cx| {

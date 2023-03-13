@@ -1,32 +1,13 @@
 // knowledge.rs
 
 use sycamore::prelude::*;
-
-use gloo_net::http::Request;
-use futures::executor::block_on;
-
-use crate::data::interpretations::Interpretation;
 use crate::components::footer::Footer;
 use crate::components::header::Header;
 use crate::components::navigation::Navigation;
-
-async fn get_interps() -> Vec<Interpretation<'static>> {
-    let fetched = Request::get("http://ghl-van-app03:8001/api/interpretations")
-        .send()
-        .await
-        .unwrap()
-        .json()
-        .await
-        .unwrap();
-    fetched
-}
+use crate::components::altsolnsearch::DisplayAltSolns;
 
 #[component]
 pub fn Knowledge<G: Html>(cx: Scope) -> View<G> {
-    let interps = block_on(get_interps());
-    let interps_views: View<G> = View::new_fragment(
-        interps.iter().map(|&interp| view! { cx, li { (interp.id) } }).collect()
-    );
     view! { cx,
         Header {}
         Navigation {}
@@ -96,9 +77,7 @@ pub fn Knowledge<G: Html>(cx: Scope) -> View<G> {
                 }
             }
         }
+        DisplayAltSolns {}
         Footer {}
-        ul {
-            (interps_views)
-        }
     }
 }
